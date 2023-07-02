@@ -42,7 +42,6 @@
           display: none;
           position: absolute;
           background-color: #f9f9f9;
-          min-wth: 200px;
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           z-index: 1;
           border: 1px sol #888;
@@ -79,41 +78,44 @@
     <body>
       <div class="dropdown px-10 py-10">
         <button class="dropbtn">
-        <span class="inline-block py-3 px-6 rounded bg-red-500 text-white text-medium font-medium tracking-west">Job Roles</span></button>
+          <span class="inline-block py-3 px-6 rounded bg-red-500 text-white text-medium font-medium tracking-west">Job Roles</span>
+        </button>
         <div class="dropdown-content">
-          <a href="#">Manager</a>
-          <a href="#">HR</a>
-          <a href="#" onclick="showResults('Results')">Web Developer</a>
+          <a href="#" onclick="showResults('Manager')">Manager</a>
+          <a href="#" onclick="showResults('HR')">HR</a>
+          <a href="#" onclick="showResults('Web Developer')">Web Developer</a>
         </div>
       </div>
-    
-      <div class="dropdown">
+      <div class="dropdown px-10 py-10">
         <button class="dropbtn">
-          <span class="inline-block py-3 px-6 rounded bg-red-500 text-white text-medium font-medium tracking-west">Locality</span></button>
+          <span class="inline-block py-3 px-6 rounded bg-red-500 text-white text-medium font-medium tracking-west">Locality</span>
+        </button>
         <div class="dropdown-content">
-          <a href="#">Berlin</a>
-          <a href="#">London</a>
-          <a href="#">Paris</a>
+          <a href="#" onclick="showResults(null, 'Berlin')">Berlin</a>
+          <a href="#" onclick="showResults(null, 'London')">London</a>
+          <a href="#" onclick="showResults(null, 'Paris')">Paris</a>
         </div>
       </div>
-      <script>
-        function showResults(id) {
-            var resultSections = document.getElementsById("Results");
-            for (var i = 0; i < resultSections.length; i++) {
-                resultSections[i].classList.add("hidden");
-            }
-            var selectedResult = document.getElementById("Results");
-            if (selectedResult) {
-                selectedResult.classList.remove("hidden");
-            }
-        }
-    </script>
+      
       <div class="Results" id="Results">
-      <div class="py-12 px-10 md:w-1/2 flex flex-col items-start pt-6">
-        <!-- <span class="inline-block py-1 px-2 rounded bg-blue-600 text-white text-medium font-medium tracking-west">Catergory: Web Developer</span> -->
-        <h2 class="sm:text-l text-l title-font font-medium text-black mt-5">Showing Results</h2>
-    </div> 
-
+        <!-- ... Rest of the code for the results section ... -->
+      </div>
+      
+      <script>
+        function showResults(role) {
+          var allCandidates = document.querySelectorAll(".lg\\:w-1\\/4");
+          for (var i = 0; i < allCandidates.length; i++) {
+            var candidate = allCandidates[i];
+            var candidateRole = candidate.querySelector(".text-gray-500").textContent;
+            if (candidateRole === role) {
+              candidate.style.display = "block";
+            } else {
+              candidate.style.display = "none";
+            }
+          }
+        }
+      </script>
+      
       <section class="text-gray-600 body-font">
         <div class="container px-5 pb-24 pt-6 mx-auto">
           <div class="flex flex-wrap -m-4">
@@ -122,7 +124,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im8.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">MERN DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Web Developer</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Lauren</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -132,7 +134,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im4.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">MERN DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Web Developer</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Alex</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -142,7 +144,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im3.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">FRONT-END DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">HR</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Max</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -152,7 +154,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im4.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">FRONT-END DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Manager</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Aron</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -162,7 +164,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im5.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">MERN DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Web Developer</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Alicia</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -172,7 +174,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im3.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">BACK-END DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Manager</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Ben</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -182,7 +184,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im5.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">BACK-END DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">Manager</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Joey</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
@@ -192,7 +194,7 @@
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="im8.png">
               </a>
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">MERN DEVELOPER</h3>
+                <h3 class="text-gray-500 text-xs tracking-west title-font mb-1">HR</h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium">Madison</h2>
                 <p class="mt-1 text-blue-600 hover:text-red-500">Learn More</p>
               </div>
